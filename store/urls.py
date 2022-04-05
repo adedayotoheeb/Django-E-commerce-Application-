@@ -1,0 +1,18 @@
+from unicodedata import name
+from django.urls import path
+from . import views
+
+
+app_name = 'store'
+
+urlpatterns = [
+
+    path('', views.index, name='home'),
+    path('dashboard', views.dashboard, name='dashboard'),
+    path('order', views.order, name='order'),
+    path('register', views.register, name='register'),
+    path('store', views.store, name='store'),
+    path('<slug:category_slug>/', views.store, name='products_by_category'),
+    path('<slug:category_slug>/<slug:product_slug>/',
+         views.product_detail, name='product_detail'),
+]
